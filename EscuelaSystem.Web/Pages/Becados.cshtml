@@ -1,0 +1,45 @@
+﻿@page
+@model EscuelaSystem.Web.Pages.BecadosModel
+@{
+}
+
+<h1>Listado de Materias</h1>
+<a class="btn btn-sm btn-outline-success" asp-page="/IngresarBecado">Ingresar Becado</a>
+<br />
+<br />
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Inscrito</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Becados)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Codigo</td>
+                <td>@item.Descripcion</td>
+                <td>
+                    @if (item.Inscrito)
+                    {
+                        <p>SI</p> }
+                    else
+                    {
+                        <p>NO</p>}
+                </td>
+                <td>
+                    <a class="btn btn-outline-warning" asp-area="" asp-page="/EditarBecado" asp-route-id="@item.Id">Editar</a>
+
+                    <a class="btn btn-outline-danger" asp-area="" asp-page="/EliminarBecado" asp-route-id="@item.Id">Eliminar</a>
+
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
